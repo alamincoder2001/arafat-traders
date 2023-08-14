@@ -304,7 +304,6 @@ class Products extends CI_Controller {
             ) as tbl
             order by Product_Name asc
         ")->result();
-
         $res['stock'] = $stock;
         $res['totalValue'] = array_sum(
             array_map(function($product){
@@ -838,7 +837,8 @@ class Products extends CI_Controller {
         ")->result();
 
         $ledger = array_map(function ($key, $row) use ($result) {
-            $row->stock = $key == 0 ? $row->in_quantity - $row->out_quantity : ($result[$key - 1]->stock + ($row->in_quantity - $row->out_quantity));
+            $row->st = $key == 0 ? $row->in_quantity - $row->out_quantity : ($result[$key - 1]->st + ($row->in_quantity - $row->out_quantity));
+            $row->stock = $row->st > 0 ? $row->st : 0;
             return $row;
         }, array_keys($result), $result);
 

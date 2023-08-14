@@ -103,9 +103,9 @@
 							<td>{{ product.Product_Name }}</td>
 							<td>{{ product.ProductCategory_Name }}</td>
 							<td>{{ product.ProductCategory_Name }}</td>
-							<td>{{ product.current_quantity | decimal }} {{ product.Unit_Name }}</td>
+							<td>{{ (product.current_quantity > 0 ? product.current_quantity : 0) | decimal }} {{ product.Unit_Name }}</td>
 							<td>{{ product.Product_Purchase_Rate | decimal }}</td>
-							<td>{{ product.stock_value | decimal }}</td>
+							<td>{{ (product.stock_value > 0 ? product.stock_value : 0) | decimal }}</td>
 						</tr>
 					</tbody>
 					<tfoot>
@@ -179,8 +179,8 @@
 							<td>{{ product.sales_returned_quantity | decimal }}</td>
 							<td>{{ product.transferred_to_quantity}}</td>
 							<td>{{ product.transferred_from_quantity}}</td>
-							<td>{{ product.current_quantity | decimal }} {{ product.Unit_Name }}</td>
-							<td>{{ product.stock_value | decimal }}</td>
+							<td>{{ (product.current_quantity > 0 ? product.current_quantity : 0) | decimal }} {{ product.Unit_Name }}</td>
+							<td>{{ (product.stock_value > 0 ? product.stock_value : 0) | decimal }}</td>
 						</tr>
 					</tbody>
 					<tfoot>
