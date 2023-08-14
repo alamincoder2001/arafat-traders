@@ -177,7 +177,7 @@
 								<td></td>
 							</tr>
 							<tr style="font-weight:bold;">
-								<td colspan="7" style="font-weight:normal;"><strong>Note: </strong>{{ sale.SaleMaster_Description }}</td>
+								<td colspan="8" style="font-weight:normal;"><strong>Note: </strong>{{ sale.SaleMaster_Description }}</td>
 								<td style="text-align:center;">Total Quantity<br>{{ sale.saleDetails.reduce((prev, curr) => {return prev + parseFloat(curr.SaleDetails_TotalQuantity)}, 0) }}</td>
 								<td style="text-align:right;">
 									Total: {{ sale.SaleMaster_TotalSaleAmount }}<br>
