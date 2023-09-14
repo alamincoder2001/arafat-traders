@@ -143,7 +143,7 @@ class Sales extends CI_Controller
                     'Status' => 'a',
                     'AddBy' => $this->session->userdata("FullName"),
                     'AddTime' => date('Y-m-d H:i:s'),
-                    'SaleDetails_BranchId' => $cartProduct->branchId
+                    'SaleDetails_BranchId' => $this->session->userdata("BRANCHid")
                 );
 
                 $this->db->insert('tbl_saledetails', $saleDetails);
@@ -154,7 +154,7 @@ class Sales extends CI_Controller
                     set sales_quantity = sales_quantity + ? 
                     where product_id = ?
                     and branch_id = ?
-                ", [$cartProduct->quantity, $cartProduct->productId, $cartProduct->branchId]);
+                ", [$cartProduct->quantity, $cartProduct->productId, $this->session->userdata("BRANCHid")]);
             }
 
             $currentDue = (float)$data->sales->previousDue + ((float)$data->sales->total - (float)$data->sales->paid);
@@ -420,7 +420,7 @@ class Sales extends CI_Controller
                     set sales_quantity = sales_quantity - ? 
                     where product_id = ?
                     and branch_id = ?
-                ", [$product->SaleDetails_TotalQuantity, $product->Product_IDNo, $product->SaleDetails_BranchId]);
+                ", [$product->SaleDetails_TotalQuantity, $product->Product_IDNo, $this->session->userdata("BRANCHid")]);
             }
 
             foreach ($data->cart as $cartProduct) {
@@ -435,7 +435,7 @@ class Sales extends CI_Controller
                     'Status' => 'a',
                     'AddBy' => $this->session->userdata("FullName"),
                     'AddTime' => date('Y-m-d H:i:s'),
-                    'SaleDetails_BranchId' => $cartProduct->branchId
+                    'SaleDetails_BranchId' => $this->session->userdata("BRANCHid")
                 );
 
                 $this->db->insert('tbl_saledetails', $saleDetails);
@@ -445,7 +445,7 @@ class Sales extends CI_Controller
                     set sales_quantity = sales_quantity + ? 
                     where product_id = ?
                     and branch_id = ?
-                ", [$cartProduct->quantity, $cartProduct->productId, $cartProduct->branchId]);
+                ", [$cartProduct->quantity, $cartProduct->productId, $this->session->userdata("BRANCHid")]);
             }
 
             $res = ['success' => true, 'message' => 'Sales Updated', 'salesId' => $salesId];
